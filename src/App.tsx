@@ -1,5 +1,6 @@
 import React from "react";
 import { Greet } from "./components/Greet";
+import { Heading } from "./components/Heading";
 import { Person } from "./components/Person";
 import { Personlist } from "./components/Personlist";
 import { Status } from "./components/Status";
@@ -19,7 +20,8 @@ function App() {
       <Greet name="Emcane" message={10} isLoggedIn={false} />
       <Person name={personName} />
       <Personlist names={nameList} />
-      <Status status="loading" />
+      <Status status="fetching" />
+      <Heading>Placeholder</Heading>
     </div>
   );
 }
