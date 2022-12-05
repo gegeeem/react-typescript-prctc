@@ -2,6 +2,7 @@ import React from "react";
 import { Greet } from "./components/Greet";
 import { Person } from "./components/Person";
 import { Personlist } from "./components/Personlist";
+import { Status } from "./components/Status";
 
 function App() {
   const personName = {
@@ -18,6 +19,7 @@ function App() {
       <Greet name="Emcane" message={10} isLoggedIn={false} />
       <Person name={personName} />
       <Personlist names={nameList} />
+      <Status status="loading" />
     </div>
   );
 }
