@@ -1,6 +1,7 @@
 import React from "react";
 import { Greet } from "./components/Greet";
 import { Heading } from "./components/Heading";
+import { Oscar } from "./components/Oscar";
 import { Person } from "./components/Person";
 import { Personlist } from "./components/Personlist";
 import { Status } from "./components/Status";
@@ -21,7 +22,9 @@ function App() {
       <Person name={personName} />
       <Personlist names={nameList} />
       <Status status="fetching" />
-      <Heading>Placeholder</Heading>
+      <Oscar>
+        <Heading>Oscar goes to Leonardo DiCaprio</Heading>
+      </Oscar>
     </div>
   );
 }
