@@ -18,7 +18,7 @@ function App() {
   ];
   return (
     <div className="App">
-      <Greet name="Emcane" message={10} isLoggedIn={false} />
+      <Greet name="Emcane" isLoggedIn={false} />
       <Person name={personName} />
       <Personlist names={nameList} />
       <Status status="fetching" />
