@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "./components/Button";
 import { Greet } from "./components/Greet";
 import { Heading } from "./components/Heading";
 import { Oscar } from "./components/Oscar";
@@ -25,6 +26,11 @@ function App() {
       <Oscar>
         <Heading>Oscar goes to Leonardo DiCaprio</Heading>
       </Oscar>
+      <Button
+        handleClick={() => {
+          console.log("Button clicked");
+        }}
+      />
     </div>
   );
 }

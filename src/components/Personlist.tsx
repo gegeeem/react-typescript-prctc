@@ -8,8 +8,8 @@ type PersonListProps = {
 export const Personlist = (props: PersonListProps) => {
   return (
     <div>
-      {props.names.map((el) => (
-        <h2>
+      {props.names.map((el, i) => (
+        <h2 key={i}>
           {el.first} {el.last}
         </h2>
       ))}
