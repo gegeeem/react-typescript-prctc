@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./components/Button";
 import { Greet } from "./components/Greet";
 import { Heading } from "./components/Heading";
+import { Input } from "./components/Input";
 import { Oscar } from "./components/Oscar";
 import { Person } from "./components/Person";
 import { Personlist } from "./components/Personlist";
@@ -27,8 +28,15 @@ function App() {
         <Heading>Oscar goes to Leonardo DiCaprio</Heading>
       </Oscar>
       <Button
-        handleClick={() => {
-          console.log("Button clicked");
+        handleClick={(event, id) => {
+          event.preventDefault();
+          console.log("Button clicked", event, id);
+        }}
+      />
+      <Input
+        value=""
+        handleChange={(event) => {
+          console.log(event);
         }}
       />
     </div>
