@@ -7,6 +7,8 @@ import { Input } from "./components/Input";
 import { Oscar } from "./components/Oscar";
 import { Person } from "./components/Person";
 import { Personlist } from "./components/Personlist";
+import { LoggedIn } from "./components/state/LoggedIn";
+import { User } from "./components/state/User";
 import { Status } from "./components/Status";
 
 function App() {
@@ -49,6 +51,7 @@ function App() {
           backgroundColor: "ButtonFace",
         }}
       />
+      <User />
     </div>
   );
 }
