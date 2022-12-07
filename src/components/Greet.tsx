@@ -4,7 +4,7 @@ type GreetProps = {
   isLoggedIn: boolean;
 };
 export const Greet = (props: GreetProps) => {
-  const { messageCount = "zero" } = props;// like default value of prop 
+  const { messageCount = "zero" } = props; // like default value of prop
   return (
     <div>
       {props.isLoggedIn ? (
