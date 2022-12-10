@@ -10,6 +10,8 @@ import { Personlist } from "./components/Personlist";
 import { LoggedIn } from "./components/state/LoggedIn";
 import { User } from "./components/state/User";
 import { Status } from "./components/Status";
+import { ThemeContextProvider } from "./components/context/ThemeContext";
+import { Box } from "./components/context/Box";
 
 function App() {
   const personName = {
@@ -52,6 +54,9 @@ function App() {
         }}
       />
       <User />
+      <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider>
     </div>
   );
 }
