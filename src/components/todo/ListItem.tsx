@@ -1,19 +1,17 @@
-import React from "react";
-import { Item } from "./models";
+import React, { useState } from "react";
+import { Item, OnCheck, } from "./models";
 
 interface ListItemProps {
   oneItem: Item;
-  onCheck: (id: number) => void;
+  onCheck: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeText: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export const ListItem = ({ oneItem, onCheck }: ListItemProps) => {
+export const ListItem = ({ oneItem, onCheck, onChangeText }: ListItemProps) => {
+  const [textItem, setTextItem] = useState("");
   return (
     <div>
-      <input
-        type={"checkbox"}
-        checked={oneItem.done}
-        onClick={() => onCheck(oneItem.id)}
-      />
-      <input type={"text"} value={oneItem.taskName} />
+      <input type={"checkbox"} checked={oneItem.done} onChange={onCheck} />
+      <input type={"text"} value={oneItem.taskName} onChange={onChangeText} />
     </div>
   );
 };

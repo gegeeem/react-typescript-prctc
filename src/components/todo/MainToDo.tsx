@@ -34,6 +34,18 @@ export const MainToDo = () => {
     setListOfAllItems(currentEls);
     console.log(id);
   };
+  const updateTextItemFunc = (id: number, newText: string) => {
+    const elementToChange: Item[] = listOfAllItems.map((el) => {
+      if (el.id === id) {
+        el.taskName = newText;
+        return el;
+      } else {
+        return el;
+      }
+    });
+    setListOfAllItems(elementToChange);
+    console.log(id);
+  };
   return (
     <ul>
       {listOfAllItems.map((el, index) => (
@@ -44,6 +56,7 @@ export const MainToDo = () => {
           onCheck={() => {
             toggler(el.id);
           }}
+          onChangeText={(e) => updateTextItemFunc(el.id, e.target.value)}
         />
       ))}
     </ul>
