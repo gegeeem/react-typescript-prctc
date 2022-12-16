@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ListItem } from "./ListItem";
-import { ListOfItemsToDo, Item } from "./models";
+import { Item, OnCheck } from "./models";
 
 const todos: Item[] = [
   {
@@ -21,7 +21,19 @@ const todos: Item[] = [
 ];
 
 export const MainToDo = () => {
-  const [listOfAllItems, setListOfAllItems] = useState(todos);
+  const [listOfAllItems, setListOfAllItems] = useState<Item[]>(todos);
+  // const toggler = (id: number) => {
+  //   const currentEls: Item[] = listOfAllItems.filter((el) => {
+  //     if (el.id === id) {
+  //       el.done = !el.done;
+  //       return el;
+  //     } else {
+  //       return el;
+  //     }
+  //   });
+  //   setListOfAllItems(currentEls);
+  //   console.log(id);
+  // };
   const toggler = (id: number) => {
     const currentEls: Item[] = listOfAllItems.filter((el) => {
       if (el.id === id) {
@@ -53,7 +65,7 @@ export const MainToDo = () => {
         <ListItem
           key={el.taskName + index}
           oneItem={el}
-          onCheck={() => {
+          onCheck={(e) => {
             toggler(el.id);
           }}
           onChangeText={(e) => updateTextItemFunc(el.id, e.target.value)}

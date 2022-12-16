@@ -11,7 +11,7 @@ export interface OnCheck {
 export interface OnChangeText {
   onChangeText: (
     event: React.ChangeEvent<HTMLInputElement>,
-    ide: NumericLiteral,
+    id: NumericLiteral,
     textToChange: string
   ) => void;
 }
