@@ -1,4 +1,5 @@
 import React from "react";
+import { Checkbox } from "@mantine/core";
 
 type ButtonProps = {
   handleClick: (event: React.MouseEvent<HTMLButtonElement>, id: number) => void;
