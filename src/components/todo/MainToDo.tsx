@@ -58,6 +58,7 @@ export const MainToDo = () => {
     console.log("elementToChange", elementToChange);
     setListOfAllItems(elementToChange);
   };
+  console.log("lisofallitemstate", listOfAllItems);
   return (
     <ul>
       {listOfAllItems.map((el, index) => (

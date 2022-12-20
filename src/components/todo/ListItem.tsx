@@ -17,27 +17,39 @@ export const ListItem = ({ oneItem, onCheck, onChangeText }: ListItemProps) => {
 
   const handleTxtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextItem(event.target.value);
-    onChangeText(oneItem.id, event.target.value);
+    console.log(textItem);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     onChangeText(oneItem.id, textItem);
     setTextItem("");
     setEdit(false);
   };
-
+  const handleEdit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setTextItem(oneItem.taskName);
+    setEdit(true);
+  };
   return (
     <div>
-      <input type={"checkbox"} checked={checkVal} onChange={handelCheck} />
-      <input
-        type={"text"}
-        value={oneItem.taskName}
-        onChange={handleTxtChange}
-      />
       {isEdit ? (
-        <input type={"button"} onClick={handleSubmit} value="save" />
+        <div>
+          <input type={"checkbox"} checked={checkVal} onChange={handelCheck} />
+          <input type={"text"} value={textItem} onChange={handleTxtChange} />
+          <button onClick={handleSubmit}>save</button>
+        </div>
       ) : (
-        <input type={"button"} onClick={handleSubmit} value="edit" />
+        <div>
+          <input type={"checkbox"} checked={checkVal} onChange={handelCheck} />
+          <input
+            type={"text"}
+            value={oneItem.taskName}
+            onChange={handleTxtChange}
+            disabled={true}
+          />
+          <button onClick={handleEdit}>edit</button>
+        </div>
       )}
     </div>
   );
