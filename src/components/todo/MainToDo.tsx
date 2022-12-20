@@ -55,8 +55,8 @@ export const MainToDo = () => {
         return el;
       }
     });
+    console.log("elementToChange", elementToChange);
     setListOfAllItems(elementToChange);
-    console.log(id);
   };
   return (
     <ul>
@@ -65,10 +65,10 @@ export const MainToDo = () => {
         <ListItem
           key={el.taskName + index}
           oneItem={el}
-          onCheck={(e) => {
-            toggler(el.id);
+          onCheck={(val: number) => {
+            toggler(val);
           }}
-          onChangeText={(e) => updateTextItemFunc(el.id, e.target.value)}
+          onChangeText={updateTextItemFunc}
         />
       ))}
     </ul>
