@@ -5,8 +5,14 @@ interface ListItemProps {
   oneItem: Item;
   onCheck: (val: number) => void;
   onChangeText: (id: number, text: string) => void;
+  onDelete: (id: number) => void;
 }
-export const ListItem = ({ oneItem, onCheck, onChangeText }: ListItemProps) => {
+export const ListItem = ({
+  oneItem,
+  onCheck,
+  onChangeText,
+  onDelete,
+}: ListItemProps) => {
   const [textItem, setTextItem] = useState<string>(oneItem.taskName);
   const [checkVal, setCheckVal] = useState<boolean>(oneItem.done);
   const [isEdit, setEdit] = useState<boolean>(false);
@@ -31,6 +37,10 @@ export const ListItem = ({ oneItem, onCheck, onChangeText }: ListItemProps) => {
     setTextItem(oneItem.taskName);
     setEdit(true);
   };
+  const handleDeleteItem = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onDelete(oneItem.id);
+  };
   return (
     <div>
       {isEdit ? (
@@ -49,6 +59,7 @@ export const ListItem = ({ oneItem, onCheck, onChangeText }: ListItemProps) => {
             disabled={true}
           />
           <button onClick={handleEdit}>edit</button>
+          <button onClick={handleDeleteItem}>delete</button>
         </div>
       )}
     </div>

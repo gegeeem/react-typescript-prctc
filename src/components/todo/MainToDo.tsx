@@ -55,10 +55,14 @@ export const MainToDo = () => {
         return el;
       }
     });
-    console.log("elementToChange", elementToChange);
+
     setListOfAllItems(elementToChange);
   };
-  console.log("lisofallitemstate", listOfAllItems);
+
+  const onDelete = (id: number) => {
+    const newListOfItems = listOfAllItems.filter((el) => el.id !== id);
+    setListOfAllItems(newListOfItems);
+  };
   return (
     <ul>
       {listOfAllItems.map((el, index) => (
@@ -66,10 +70,9 @@ export const MainToDo = () => {
         <ListItem
           key={el.taskName + index}
           oneItem={el}
-          onCheck={(val: number) => {
-            toggler(val);
-          }}
+          onCheck={toggler}
           onChangeText={updateTextItemFunc}
+          onDelete={onDelete}
         />
       ))}
     </ul>
