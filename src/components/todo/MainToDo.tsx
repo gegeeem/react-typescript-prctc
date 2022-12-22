@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { AddItem } from "./AddItem";
 import { ListItem } from "./ListItem";
-import { Item, OnCheck } from "./models";
+import { Item } from "./models";
 
 const todos: Item[] = [
   {
@@ -65,6 +66,7 @@ export const MainToDo = () => {
   };
   return (
     <ul>
+      <AddItem oldItemList={listOfAllItems} setAddItem={setListOfAllItems} />
       {listOfAllItems.map((el, index) => (
         // <li key={el.taskName + index}>{el.taskName}</li>
         <ListItem

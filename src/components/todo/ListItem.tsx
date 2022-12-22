@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Item, OnCheck } from "./models";
+import React, { useState } from "react";
+import { Item } from "./models";
 
 interface ListItemProps {
   oneItem: Item;
