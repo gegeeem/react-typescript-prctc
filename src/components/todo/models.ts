@@ -1,7 +1,7 @@
 import { NumericLiteral } from "typescript";
 
 export interface Item {
-  id: number;
+  id: number | string;
   taskName: string;
   done: boolean;
 }

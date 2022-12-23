@@ -12,7 +12,7 @@ export const AddItem = ({ oldItemList, setAddItem }: AddItemProps) => {
     setAddTextItem(event.target.value);
   };
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    setAddTextItem("");
+    event.target.value = "";
   };
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -20,8 +20,9 @@ export const AddItem = ({ oldItemList, setAddItem }: AddItemProps) => {
     if (addTextItem) {
       setAddItem((prev) => [
         ...prev,
-        { id: Math.random(), taskName: addTextItem, done: false },
+        { id: Math.random() * 10, taskName: addTextItem, done: false },
       ]);
+      setAddTextItem("");
     }
   };
   return (

@@ -3,9 +3,9 @@ import { Item } from "./models";
 
 interface ListItemProps {
   oneItem: Item;
-  onCheck: (val: number) => void;
-  onChangeText: (id: number, text: string) => void;
-  onDelete: (id: number) => void;
+  onCheck: (val: number | string) => void;
+  onChangeText: (id: number | string, text: string) => void;
+  onDelete: (id: number | string) => void;
 }
 export const ListItem = ({
   oneItem,

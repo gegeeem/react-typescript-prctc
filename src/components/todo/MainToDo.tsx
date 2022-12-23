@@ -35,7 +35,7 @@ export const MainToDo = () => {
   //   setListOfAllItems(currentEls);
   //   console.log(id);
   // };
-  const toggler = (id: number) => {
+  const toggler = (id: number|string) => {
     const currentEls: Item[] = listOfAllItems.filter((el) => {
       if (el.id === id) {
         el.done = !el.done;
@@ -47,7 +47,7 @@ export const MainToDo = () => {
     setListOfAllItems(currentEls);
     console.log(id);
   };
-  const updateTextItemFunc = (id: number, newText: string) => {
+  const updateTextItemFunc = (id: number|string, newText: string) => {
     const elementToChange: Item[] = listOfAllItems.map((el) => {
       if (el.id === id) {
         el.taskName = newText;
@@ -60,7 +60,7 @@ export const MainToDo = () => {
     setListOfAllItems(elementToChange);
   };
 
-  const onDelete = (id: number) => {
+  const onDelete = (id: number|string) => {
     const newListOfItems = listOfAllItems.filter((el) => el.id !== id);
     setListOfAllItems(newListOfItems);
   };
