@@ -2,11 +2,10 @@ import React, { useState } from "react";
 
 import { Item } from "./models";
 interface AddItemProps {
-  oldItemList: Item[];
   setAddItem: React.Dispatch<React.SetStateAction<Item[]>>;
 }
 
-export const AddItem = ({ oldItemList, setAddItem }: AddItemProps) => {
+export const AddItem = ({ setAddItem }: AddItemProps) => {
   const [addTextItem, setAddTextItem] = useState<string>("");
   const handleTextItemInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAddTextItem(event.target.value);
@@ -32,8 +31,9 @@ export const AddItem = ({ oldItemList, setAddItem }: AddItemProps) => {
         name="newItem"
         onChange={handleTextItemInput}
         onFocus={handleFocus}
+        value={addTextItem}
       />
-      <input type={"submit"} />
+      <button>Add</button>
     </form>
   );
 };
