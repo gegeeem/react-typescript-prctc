@@ -23,7 +23,6 @@ export const ListItem = ({
 
   const handleTxtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextItem(event.target.value);
-    console.log(textItem);
   };
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
