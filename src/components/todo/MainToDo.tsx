@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AddItem } from "./AddItem";
 import { ListItem } from "./ListItem";
 import { Item } from "./models";
+import { SelectBy } from "./SelectBy";
 
 const todos: Item[] = [
   {
@@ -65,18 +66,24 @@ export const MainToDo = () => {
     setListOfAllItems(newListOfItems);
   };
   return (
-    <ul>
-      <AddItem setAddItem={setListOfAllItems} />
-      {listOfAllItems.map((el, index) => (
-        // <li key={el.taskName + index}>{el.taskName}</li>
-        <ListItem
-          key={el.taskName + index}
-          oneItem={el}
-          onCheck={toggler}
-          onChangeText={updateTextItemFunc}
-          onDelete={onDelete}
-        />
-      ))}
-    </ul>
+    <div>
+      <SelectBy
+        listOfItems={listOfAllItems}
+        setFilterItem={setListOfAllItems}
+      />
+      <ul>
+        <AddItem setAddItem={setListOfAllItems} />
+        {listOfAllItems.map((el, index) => (
+          // <li key={el.taskName + index}>{el.taskName}</li>
+          <ListItem
+            key={el.taskName + index}
+            oneItem={el}
+            onCheck={toggler}
+            onChangeText={updateTextItemFunc}
+            onDelete={onDelete}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
