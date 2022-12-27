@@ -16,14 +16,29 @@ export const AddItem = ({ setAddItem }: AddItemProps) => {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     const { v4: uuidv4 } = require("uuid"); /// create new id function
-
+    const getLocalStorageitems = JSON.parse(
+      localStorage.getItem("ListOfTaskITem") || ""
+    );
+    // console.log("typeof", typeof getLocalStorageitems);
     if (addTextItem) {
-      setAddItem((prev) => [
-        ...prev,
-        { id: uuidv4(), taskName: addTextItem, done: false },
-      ]);
+      const newItemAdded: Item = {
+        id: uuidv4(),
+        taskName: addTextItem,
+        done: false,
+      };
+      // const newLocalItemsList = getLocalStorageitems.push(newItemAdded);
+      // console.log("typeof getLocalStorageitems ", typeof getLocalStorageitems);
+      getLocalStorageitems.push(newItemAdded);
+      // console.log("getLocalStorageitems ", getLocalStorageitems);
+
+      setAddItem((prev) => [...prev, newItemAdded]);
+      // localStorage.removeItem("ListOfTaskITem");
+
+      localStorage.setItem(
+        "ListOfTaskITem",
+        JSON.stringify(getLocalStorageitems)
+      );
       setAddTextItem("");
-      console.log("event", event);
     }
   };
   return (

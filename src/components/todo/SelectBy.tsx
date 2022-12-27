@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 import { Item } from "./models";
 
-type SelectByProps = {
+interface SelectByProps {
   listOfItems: Item[];
   setFilterItem: React.Dispatch<React.SetStateAction<Item[]>>;
-};
+}
 
+type selectValues = "all" | "active" | "completed";
 export const SelectBy = ({ listOfItems, setFilterItem }: SelectByProps) => {
-  const [selectState, setSelectedState] = useState<string>();
+  const [selectState, setSelectedState] = useState<string>("all");
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedState(event.target.value);
-    if (event.target.value === "all") return;
+    const getLocalStorageitems: Item[] = JSON.parse(
+      localStorage.getItem("ListOfTaskITem") || ""
+    );
+    console.log("getLocalStorageitems", getLocalStorageitems);
+    if (event.target.value === "all") {
+      setFilterItem(getLocalStorageitems);
+    }
     if (event.target.value === "active") {
-      const newOrderList = listOfItems.filter((el) => el.done === false);
+      console.log("getLocalStorageitems", getLocalStorageitems);
+
+      const newOrderList = getLocalStorageitems?.filter(
+        (el) => el.done === false
+      );
       setFilterItem(newOrderList);
     }
     if (event.target.value === "completed") {
-      const newOrderList = listOfItems.filter((el) => el.done === true);
+      const newOrderList = getLocalStorageitems?.filter(
+        (el) => el.done === true
+      );
       setFilterItem(newOrderList);
     }
   };
