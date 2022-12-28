@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getLocalStorageitems } from "./LocalStorage";
 import { Item } from "./models";
 
 interface ListItemProps {
@@ -17,9 +16,27 @@ export const ListItem = ({
   const [textItem, setTextItem] = useState<string>(oneItem.taskName);
   const [checkVal, setCheckVal] = useState<boolean>(oneItem.done);
   const [isEdit, setEdit] = useState<boolean>(false);
+
+  const getLocalStorageitems = JSON.parse(
+    localStorage.getItem("ListOfTaskITem") || ""
+  );
+  const checkItemInLocalStrg = (id: number | string) => {
+    const currentEls = getLocalStorageitems.map((el: Item) => {
+      if (el.id === id) {
+        el.done = !el.done;
+        return el;
+      } else {
+        return el;
+      }
+    });
+    console.log("currentEls", getLocalStorageitems);
+    localStorage.setItem("ListOfTaskITem", JSON.stringify(currentEls));
+  };
+
   const handelCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckVal((prev) => !prev);
     onCheck(oneItem.id);
+    checkItemInLocalStrg(oneItem.id);
   };
 
   const handleTxtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
