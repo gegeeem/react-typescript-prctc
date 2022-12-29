@@ -21,11 +21,17 @@ const todos: Item[] = [
     done: false,
   },
 ];
+const getlocalstorage = localStorage.getItem("ListOfTaskITem");
 if (localStorage.getItem("ListOfTaskITem") === null) {
   localStorage.setItem("ListOfTaskITem", JSON.stringify(todos));
 }
+const getLocalStorageitems: Item[] = JSON.parse(
+  localStorage.getItem("ListOfTaskITem") || ""
+);
 export const MainToDo = () => {
-  const [listOfAllItems, setListOfAllItems] = useState<Item[]>([]);
+  const [listOfAllItems, setListOfAllItems] = useState<Item[]>(
+    getLocalStorageitems.length ? getLocalStorageitems : todos
+  );
 
   // const toggler = (id: number) => {
   //   const currentEls: Item[] = listOfAllItems.filter((el) => {
@@ -39,10 +45,7 @@ export const MainToDo = () => {
   //   setListOfAllItems(currentEls);
   //   console.log(id);
   // };
-  const getLocalStorageitems: Item[] = JSON.parse(
-    localStorage.getItem("ListOfTaskITem") || ""
-  );
-  console.log("getLocalStorageitems", getLocalStorageitems);
+
   // console.log("typeof main getlocalstorage", typeof getLocalStorageitems);
   // console.log("listOfAllItems", listOfAllItems);
   // console.log("todos", todos);
